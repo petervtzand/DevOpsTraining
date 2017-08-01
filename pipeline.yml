@@ -38,6 +38,6 @@ jobs:
 - name: sources-write # Name of the resource
   type: git # Resource type
   source:
-    uri: git@github.com:Hylke1982/DevOpsTraining.git
+    uri: git@github.com:petervtzand/DevOpsTraining.git
     private_key: ((private-repo-key))
     branch: master
