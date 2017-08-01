@@ -6,6 +6,12 @@ resources:
     uri: git@github.com:petervtzand/DevOpsTraining.git
     branch: master
     private_key: ((private-repo-key))
+- name: sources-write # Name of the resource
+  type: git # Resource type
+  source:
+    uri: git@github.com:petervtzand/DevOpsTraining.git
+    private_key: ((private-repo-key))
+    branch: master
 
 # Jobs section
 jobs:
@@ -35,9 +41,3 @@ jobs:
   - put: sources-write
     params: {repository: sources-output} # Push latest version after tagging en version bump
 
-- name: sources-write # Name of the resource
-  type: git # Resource type
-  source:
-    uri: git@github.com:petervtzand/DevOpsTraining.git
-    private_key: ((private-repo-key))
-    branch: master
