@@ -15,6 +15,7 @@ jobs:
     trigger: true
   - task: build software
     file: sources/CI/task-build.yml
+
 - name: test # Name of the job
   plan:
   - get: sources # Download the sources
@@ -22,6 +23,7 @@ jobs:
     passed: [build] # Trigger after job build has passed
   - task: unit test
     file: sources/CI/task-unit-test.yml
+
 - name: deploy # Name of the job
   serial: true # No parallel execution of the plan
   plan:
@@ -32,6 +34,7 @@ jobs:
     file: sources/CI/task-deploy.yml
   - put: sources-write
     params: {repository: sources-output} # Push latest version after tagging en version bump
+
 - name: sources-write # Name of the resource
   type: git # Resource type
   source:
