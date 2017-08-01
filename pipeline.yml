@@ -1,0 +1,17 @@
+# Resource section
+resources:
+- name: sources # Name of the resource
+  type: git # Resource type
+  source:
+    uri: git@github.com:petervtzand/DevOpsTraining.git
+    branch: master
+    private_key: ((private-repo-key))
+
+# Jobs section
+jobs:
+- name: build
+  plan:
+  - get: sources
+    trigger: true
+  - task: build software
+    file: sources/CI/task-build.yml
